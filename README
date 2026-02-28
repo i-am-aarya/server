@@ -1,3 +1,1 @@
-# Concurrent HTTP/1.1 Server in C
-
-A multithreaded HTTP/1.1 static file server built from scratch in C11. Features a lock-free work queue, adaptive thread pool, and persistent connection handling.
+# Multithreaded HTTP Server in C
