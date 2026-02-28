@@ -1,0 +1,21 @@
+#ifndef CONFIG_H
+#define CONFIG_H
+
+#define SERVER_PORT 8080
+#define SERVER_BACKLOG 128
+
+#define QUEUE_CAPACITY 1024
+
+#define THREAD_MIN 16
+#define THREAD_MAX 32
+#define THREAD_IDLE_MS 60000
+
+#define KEEPALIVE_TIMEOUT_MS 5000
+#define KEEPALIVE_MAX_REQ 100
+
+#define BUFFER_SIZE 8192
+#define PATH_MAX_LEN 4096
+
+#define LOG_BUF_SIZE 256
+
+#endif
