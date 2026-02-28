@@ -42,31 +42,30 @@ make
 -t THREADS Initial thread pool size (default: 4)
 -m MAX Maximum threads for adaptive scaling (default: 64)
 -d ROOT Document root directory (default: ./www)
+```
 
-### Example
+## Example
 
 ```bash
-
-# Terminal 1: Start server
+# Start server
 mkdir -p www && echo "<h1>Hello</h1>" > www/index.html
 ./server -p 8080 -t 4 -m 16 -d ./www
 
 # Terminal 2: Test
-
 curl http://localhost:8080/index.html
 curl -v http://localhost:8080/index.html http://localhost:8080/index.html # Keep-Alive
 
 # Load test
-
 wrk -t4 -c100 -d30s http://localhost:8080/index.html
-````
+```
 
 ## Specification Compliance
 
-[x] HTTP/1.1 persistent connections (Keep-Alive)
-[x] GET and HEAD methods
-[x] Host, Connection, Content-Length headers
-[x] Path traversal protection
-[x] Graceful shutdown
-[ ] Chunked transfer encoding (future work)
-[ ] Event-driven I/O reactor (future work)
+- [x] HTTP/1.1 persistent connections (Keep-Alive)
+- [x] GET and HEAD methods
+- [x] Host, Connection, Content-Length headers
+- [x] Path traversal protection
+- [x] Graceful shutdown
+- [ ] Chunked transfer encoding (future work)
+- [ ] Event-driven I/O reactor (future work)
+````
