@@ -35,7 +35,7 @@ make
 
 ## Usage
 
-````bash
+```bash
 ./server [options]
 
 -p PORT Port to bind (default: 8080)
@@ -57,6 +57,7 @@ curl -v http://localhost:8080/index.html http://localhost:8080/index.html # Keep
 
 # Load test
 wrk -t4 -c100 -d30s http://localhost:8080/index.html
+
 ```
 
 ## Specification Compliance
@@ -68,4 +69,3 @@ wrk -t4 -c100 -d30s http://localhost:8080/index.html
 - [x] Graceful shutdown
 - [ ] Chunked transfer encoding (future work)
 - [ ] Event-driven I/O reactor (future work)
-````
