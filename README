@@ -15,7 +15,7 @@ A multithreaded HTTP/1.1 static file server built from scratch in C11. Features 
 
 ## Architecture
 
-```
+```text
 [Main Thread] ──accept()──▶ [Lock-Free Queue] ◄──dequeue── [Worker Threads]
 │ (SPSC/MPMC) │
 │ │
