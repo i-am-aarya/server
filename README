@@ -13,6 +13,21 @@ A multithreaded HTTP/1.1 static file server built from scratch in C11. Features 
 | **Security**             | Path traversal protection (`../` sanitization)          |
 | **Graceful Shutdown**    | SIGINT/SIGTERM handling with connection draining        |
 
+## Architecture
+
+```mermaid
+flowchart LR
+    A[Main Thread]
+    B[Lock-Free Queue]
+    C[Worker Threads]
+    D[Adaptive Pool Monitor]
+
+    A -->|accept()| B
+    B -->|dequeue| C
+    A -->|enqueue| B
+    C --> D
+```
+
 ## Build
 
 ```bash
@@ -22,11 +37,14 @@ make
 
 ## Usage
 
+```bash
 ./server [options]
+
 -p PORT Port to bind (default: 8080)
 -t THREADS Initial thread pool size (default: 4)
 -m MAX Maximum threads for adaptive scaling (default: 64)
 -d ROOT Document root directory (default: ./www)
+```
 
 ### Example
 
@@ -45,3 +63,13 @@ curl -v http://localhost:8080/index.html http://localhost:8080/index.html # Keep
 
 wrk -t4 -c100 -d30s http://localhost:8080/index.html
 ```
+
+## Specification Compliance
+
+[x] HTTP/1.1 persistent connections (Keep-Alive)
+[x] GET and HEAD methods
+[x] Host, Connection, Content-Length headers
+[x] Path traversal protection
+[x] Graceful shutdown
+[ ] Chunked transfer encoding (future work)
+[ ] Event-driven I/O reactor (future work)
