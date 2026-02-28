@@ -13,19 +13,6 @@ A multithreaded HTTP/1.1 static file server built from scratch in C11. Features 
 | **Security**             | Path traversal protection (`../` sanitization)          |
 | **Graceful Shutdown**    | SIGINT/SIGTERM handling with connection draining        |
 
-## Architecture
-
-```text
-[Main Thread] ──accept()──▶ [Lock-Free Queue] ◄──dequeue── [Worker Threads]
-│ (SPSC/MPMC) │
-│ │
-└──enqueue() └──process HTTP
-│
-▼
-[Adaptive Pool Monitor]
-(scale on wait time > 50ms)
-```
-
 ## Build
 
 ```bash
